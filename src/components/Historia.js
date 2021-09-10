@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import historias from "./data.json";
 import Escogencia from "./Escogencia";
 import Recordatorio from "./Recordatorio";
-import {Swal} from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 const historial = []
 class Historia extends Component {
@@ -20,12 +20,24 @@ class Historia extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         historias.push(historias.shift());
-
+        historias.push(historias.shift());
         historial.push(this.state.letraEscogida);
 
-        if(historial.length === 5){
-            Swal.fire('Lo lograste, gracias por jugar!')
-            window.location.replace('');
+        if(historial.length == 5){
+            Swal.fire({
+                title: '¿Quiéres volver a jugar?',
+                text: "Vamos, intenta de nuevo!",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, vamos!',
+                cancelButtonText: 'No, gracias!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });            
         }
         
     }
