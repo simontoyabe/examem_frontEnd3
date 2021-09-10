@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import historias from "./data.json";
-import Selection from "./Escogencia";
+import Escogencia from "./Escogencia";
 import Recordatorio from "./Recordatorio";
 import {Swal} from 'sweetalert2';
 
@@ -44,10 +44,10 @@ class Historia extends Component {
             <div className = "layout">
                 <h1 className = "historia">{historias[this.state.seleccion].historia}</h1>                
                 <div className = "opciones">
-                    <Selection storyId="A" storyOption={historias[this.state.seleccion].opciones.a} handleClick={this.handleClick}/>
-                    <Selection storyId="B" storyOption={historias[this.state.seleccion].opciones.b} handleClick={this.handleClick}/>
+                    <Escogencia idHistoria="A" opcionHistoria={historias[this.state.seleccion].opciones.a} handleClick={this.handleClick}/>
+                    <Escogencia idHistoria="B" opcionHistoria={historias[this.state.seleccion].opciones.b} handleClick={this.handleClick}/>
                 </div>
-                <Recordatorio lastSelection={this.state.letraEscogida} historical={historial.map(
+                <Recordatorio ultimoEscogido={this.state.letraEscogida} historico={historial.map(
             (event, index) => (
               <li key={index}>{event}</li>
             ),

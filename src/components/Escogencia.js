@@ -6,10 +6,10 @@ class Escogencia extends Component {
     render (){
         return (
             <div className = "opcion">
-                <button id={this.props.storyId} className="botones" onClick={this.props.handleClick}>
-                    {this.props.storyId}
+                <button id={this.props.IdHistoria} className="botones" onClick={this.props.handleClick}>
+                    {this.props.idHistoria}
                 </button>
-                <h2>{this.props.storyOption}</h2>
+                <h2>{this.props.opcionHistoria}</h2>
             </div>
         )
     }
